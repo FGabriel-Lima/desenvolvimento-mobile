@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+    <!-- Foto de perfil -->
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/saopaulologo"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="Foto de perfil"/>
+
+    <!--Nome-->
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="São Paulo Futebol Clube"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="8dp"/>
+
+    <!--Descrição-->
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="
+O São Paulo Futebol Clube é um dos clubes de futebol
+mais tradicionais e vitoriosos do Brasil. Fundado em
+25 de janeiro de 1930 (e refundado em 1935), é conhecido
+por sua história rica e sucesso tanto no cenário nacional
+quanto internacional."
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="4dp"/>
+
+    <!--Emprego atual-->
+    <TextView
+        android:id="@+id/titlesWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Títulos Principais: \n3x Mundial
+        \n3x Libertadores \n6x Brasileiros"
+        android:textSize="16sp"
+        android:paddingTop="8dp" />
+
+
+
+</LinearLayout>
