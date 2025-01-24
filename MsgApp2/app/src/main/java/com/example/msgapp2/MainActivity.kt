@@ -11,37 +11,33 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.room.Room
+import com.example.msgapp2.data.local.database.AppDataBase
+import com.example.msgapp2.repository.MessageRepository
 import com.example.msgapp2.ui.theme.MsgApp2Theme
+import com.example.msgapp2.ui.view.MessageApp
+import com.example.msgapp2.viewmodel.MessageViewModel
+import com.example.msgapp2.viewmodel.MessageViewModelFactory
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
+        val db = Room.databaseBuilder(
+            applicationContext,
+            AppDataBase::class.java,
+            name = "messages-db"
+        ).fallbackToDestructiveMigration().build()
+
+        val repository = MessageRepository(db.messageDao())
+
         setContent {
             MsgApp2Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                val viewModel: MessageViewModel =
+                    viewModel(factory = MessageViewModelFactory(repository))
+                MessageApp(viewModel)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MsgApp2Theme {
-        Greeting("Android")
     }
 }
