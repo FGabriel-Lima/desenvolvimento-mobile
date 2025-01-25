@@ -147,7 +147,7 @@ fun MessageBubble(content: String, isUserMessage: Boolean) {
             modifier = Modifier
                 .background(
                     color = if (isUserMessage) MaterialTheme.colorScheme.primary else {
-                        MaterialTheme.colorScheme.surface
+                        MaterialTheme.colorScheme.secondary
                     },
                     shape = RoundedCornerShape(16.dp)
                 )
